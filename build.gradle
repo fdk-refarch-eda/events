@@ -12,19 +12,8 @@ protobuf {
   generateProtoTasks {
     all().each { task ->
       task.builtins {
-        go {
-          option 'paths=source_relative'
-        }
-
         // If you wish to avoid generating Java files:
         remove java
-      }
-
-      task.doLast {
-        copy {
-          from "$generatedFilesBaseDir/${sourceSet.name}/go"
-          into 'src/generated/go'
-        }
       }
     }
   }
